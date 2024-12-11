@@ -5,7 +5,7 @@ test.describe("coffee-cart", () => {
     await page.goto("https://coffee-cart.app/");
   });
 
-  test(" Check coffee is visible and buy it", async ({ page }) => {
+  test(" Check coffee is visible and buy coffee", async ({ page }) => {
     await expect(page.getByRole("heading", { name: "Espresso $" })).toBeVisible();
     await page.locator('[data-test="Espresso"]').click();
     await expect(page.locator('[data-test="checkout"]')).toBeVisible();
@@ -19,7 +19,7 @@ test.describe("coffee-cart", () => {
     await expect(page.locator("#app")).toContainText("Thanks for your purchase. Please check your email for payment.");
   });
 
-  test("Check order and buy coffee", async ({ page }) => {
+  test(" Buy coffee and check order", async ({ page }) => {
     await page.locator('[data-test="Espresso"]').click();
     await expect(page.locator('[data-test="checkout"]')).toBeVisible();
     await expect(page.locator("#app")).toContainText("Espresso");
@@ -100,7 +100,7 @@ test.describe("playwright page", () => {
     await expect(page.getByText("playwright.config.tspackage.")).toBeVisible();
   });
 
-  test(" Check input Search", async ({ page }) => {
+  test(" Check the 'Search' input", async ({ page }) => {
     await expect(page.getByLabel("Search")).toBeVisible();
     await page.getByLabel("Search").click();
     await page.getByPlaceholder("Search docs").fill("Expect Timeout");
@@ -115,9 +115,9 @@ test.describe("playwright page", () => {
   });
 
   test(" Check btn", async ({ page }) => {
-  await page.getByRole('link', { name: 'Get started' }).click();
-  await page.getByRole('link', { name: 'Generating tests' }).click();
-  await expect(page.locator('h1')).toContainText('Generating tests');
-  await expect(page.getByLabel('Copy code to clipboard')).toBeVisible();
+    await page.getByRole("link", { name: "Get started" }).click();
+    await page.getByRole("link", { name: "Generating tests" }).click();
+    await expect(page.locator("h1")).toContainText("Generating tests");
+    await expect(page.getByLabel("Copy code to clipboard")).toBeVisible();
   });
 });
