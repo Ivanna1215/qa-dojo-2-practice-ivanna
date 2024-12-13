@@ -26,29 +26,6 @@ test.describe("coffee-cart", () => {
     await expect(page.locator("#app")).toContainText("x 1");
   });
 
-  test.skip("Check special propose", async ({ page }) => {
-    await page.locator('[data-test="Cafe_Latte"]').click();
-    await expect(page.locator("#app")).toContainText("It's your lucky day! Get an extra cup of Mocha for $4.");
-    await expect(page.getByRole("button", { name: "Yes, of course!" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Nah, I'll skip." })).toBeVisible();
-  });
-
-  test.skip("Check count coffee", async ({ page }) => {
-    await page.goto("https://coffee-cart.app/");
-    await page.locator('[data-test="Espresso"]').click();
-    await page.locator('[data-test="checkout"]').click();
-    await page.getByLabel("Add one Espresso", { exact: true }).click();
-    await expect(page.locator("#app")).toContainText("x 2");
-  });
-
-  test.skip("Check remove coffee", async ({ page }) => {
-    await page.locator('[data-test="Espresso_Macchiato"]').click();
-    await page.getByLabel("Add one Espresso Macchiato").click();
-    await expect(page.locator("#app")).toContainText("x 2");
-    await page.getByLabel("Remove one Espresso Macchiato").click();
-    await page.getByLabel("Remove one Espresso Macchiato").click();
-    await expect(page.locator('[data-test="checkout"]')).toContainText("Total: $0.00");
-  });
 
   test("Check Payment details", async ({ page }) => {
     await expect(page.locator('[data-test="Espresso"]')).toBeVisible();
