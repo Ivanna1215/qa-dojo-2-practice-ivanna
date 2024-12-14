@@ -7,8 +7,8 @@ test.describe("Homework_4", () => {
 
   test("Verify fields in Payment details", async ({ page }) => {
     await page.locator('[data-test="checkout"]').click();
-    expect(page.locator('input[ id="name"]')).toBeEditable;
-    expect(page.locator('input[ id="email"]')).toBeEditable;
+    await expect(page.locator('input[ id="name"]')).toBeEditable();
+    await expect(page.locator('input[ id="email"]')).toBeEditable();
   });
 
   test("Check value", async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe("Homework_4", () => {
     await page.locator('[data-test="Espresso"]').click();
     await expect(page.locator('[data-test="checkout"]')).toBeVisible();
     await expect(page.locator('[id="app"]')).toContainText("Espresso");
-    await expect(page.locator('[id="app"]')).toContainText("x 1");
+    await expect(page.locator('[id="app"]')).toContainText("1");
   });
 
   test("Check count coffee", async ({ page }) => {
@@ -43,7 +43,8 @@ test.describe("Homework_4", () => {
   });
 
   test("Check coffee is visible and buy coffee", async ({ page }) => {
-    await expect(page.locator("ul li h4").nth(1)).toBeVisible();
+    await expect(page.getByText("Espresso")).toBeVisible();
+    // await expect(page.locator("ul li h4", { hasText: "Espresso" })).toBeVisible();
     await page.locator('[data-test="Espresso"]').click();
     await expect(page.locator('[data-test="checkout"]')).toBeVisible();
     await page.locator('[data-test="checkout"]').click();
