@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-test.describe("playwright page", () => {
+test.describe("Playwright page", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://playwright.dev/");
   });
@@ -25,7 +25,7 @@ test.describe("playwright page", () => {
     await page.locator(".DocSearch").click();
     page.waitForSelector(".DocSearch-Input", { state: "attached", timeout: 60_000 });
     await page.locator(".DocSearch-Input").fill("Expect Timeout");
-    // await expect(page.getByPlaceholder("Search docs")).toHaveValue("Expect Timeout");
+    await expect(page.locator(".DocSearch-Input")).toHaveValue("Expect Timeout");
   });
 
   test(" Check Git", async ({ page }) => {
