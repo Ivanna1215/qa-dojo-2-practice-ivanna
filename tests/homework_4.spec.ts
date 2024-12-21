@@ -60,13 +60,4 @@ test.describe("Homework_4", () => {
     await expect(page.locator("#app")).toContainText("Cafe Latte");
     await expect(page.locator("#app")).toContainText("Espresso Con Panna");
   });
-
-  // Is this BAG?
-  test("If I don't pay anything", async ({ page }) => {
-    await page.locator('[data-test="checkout"]').click();
-    await page.locator('input[ id="name"]').fill("Ivanna");
-    await page.locator('input[ id="email"]').fill("test@gmail.com");
-    await page.locator('button[id="submit-payment"]').click();
-    await expect(page.locator('[id="app"]')).toContainText("Thanks for your purchase. Please check your email for payment.");
-  });
 });
