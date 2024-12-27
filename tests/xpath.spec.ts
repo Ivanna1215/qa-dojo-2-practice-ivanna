@@ -68,6 +68,7 @@ test("test", async ({ page }) => {
 
   // const tagHref = await page.locator('//a[contains(@href,"tag")]').getAttribute("href");
   const tagsLocators = await page.locator('//a[contains(@href,"tag")]').all(); /* return array all elements */
+
   let tags: Array<string | null> = [];
 
   for (const loc of tagsLocators) {
