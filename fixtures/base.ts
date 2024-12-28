@@ -1,13 +1,18 @@
 import base from "@playwright/test";
-import { LocatorsPage } from "../pages/LocatorsPage";
+import { CoffeeCartPage } from "../pages/CoffeeCartPage";
+import { ConditionsPage } from "../pages/ConditionsPage";
 
 type BaseFixtures = {
-  locatorsPage: LocatorsPage;
+  coffeeCartPage: CoffeeCartPage;
+  conditionsPage: ConditionsPage;
 };
 
 export const test = base.extend<BaseFixtures>({
-  locatorsPage: async ({ page }, use) => {
-    await use(new LocatorsPage(page));
+  coffeeCartPage: async ({ page }, use) => {
+    await use(new CoffeeCartPage(page));
+  },
+  conditionsPage: async ({ page }, use) => {
+    await use(new ConditionsPage(page));
   },
 });
 

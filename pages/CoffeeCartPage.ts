@@ -1,5 +1,5 @@
 import { expect, type Locator, type Page } from "@playwright/test";
-export class LocatorsPage {
+export class CoffeeCartPage {
   readonly page: Page;
   readonly cafeLatte: Locator;
   readonly checkout: Locator;
@@ -34,5 +34,19 @@ export class LocatorsPage {
     this.cartPreviews = page.locator('ul[class="cart-preview show"]');
     this.snackbar = page.locator('[class="snackbar success"]');
     this.payContainer = page.locator('[class="pay-container"]');
+  }
+
+  async addCoffeeToOrder(coffee: Locator) {
+    await coffee.click();
+  }
+
+  async orderCoffee(coffee: Locator, name: string, email: string) {
+    this.addCoffeeToOrder(coffee);
+    await this.checkout.click();
+    await this.inputName.fill(name);
+    await this.inputEmail.fill(email);
+    await this.checkbox.check();
+    await this.submitButton.click();
+    await expect(this.snackbar).toContainText("Thanks for your purchase. Please check your email for payment.");
   }
 }
