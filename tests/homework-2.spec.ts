@@ -26,7 +26,6 @@ test.describe("coffee-cart", () => {
     await expect(page.locator("#app")).toContainText("x 1");
   });
 
-
   test("Check Payment details", async ({ page }) => {
     await expect(page.locator('[data-test="Espresso"]')).toBeVisible();
     await page.locator('[data-test="Cafe_Latte"]').click();

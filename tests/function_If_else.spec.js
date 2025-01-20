@@ -20,6 +20,7 @@ if (age > 18) {
 II або
 
 */
+
 // age = Number("35");
 
 if (age === 35) {

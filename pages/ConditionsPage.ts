@@ -1,10 +1,11 @@
 import { expect, type Locator, type Page } from "@playwright/test";
 export class ConditionsPage {
   readonly page: Page;
-
+  // забрати class constructor перейменувати файл і функції for example isNumber isAverage
   constructor(page: Page) {
     this.page = page;
   }
+
   async determineNumber(num: number) {
     if (num % 2 === 0) {
       console.log("This is EVEN NUMBER ");
@@ -28,7 +29,7 @@ export class ConditionsPage {
       console.log("Good Afternoon!");
       return "Good Afternoon!";
     }
-    if (hour >= 18 && hour <= 24) {
+    if (hour >= 18 && hour < 24) {
       console.log("Good Evening");
       return "Good Evening!";
     }
@@ -38,7 +39,7 @@ export class ConditionsPage {
     }
   }
 
-  async checkAverage(average: number) {
+  async isPash(average: number) {
     if (average >= 50) {
       console.log("Test is passed");
       return true;
@@ -72,13 +73,14 @@ export class ConditionsPage {
   }
 
   async determineWay(color: string) {
-    if (color === "red") {
+    const res = color.toLowerCase();
+    if (res === "red") {
       return false;
     }
-    if (color === "yellow") {
+    if (res === "yellow") {
       return false;
     }
-    if (color === "green") {
+    if (res === "green") {
       return true;
     }
   }
@@ -91,7 +93,7 @@ export class ConditionsPage {
       return false;
     }
     if (num === 0) {
-      return null;
+      return num;
     }
   }
 }
